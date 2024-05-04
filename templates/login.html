@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eddfd6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        label {
+            color: #666;
+            display: block;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #5cb85c;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #4cae4c;
+        }
+
+        .success-message {
+            background-color: #dff0d8;
+            color: #3c763d;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #d6e9c6;
+        }
+
+        .login-link {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<h2>Login</h2>
+
+{{if .SuccessMessage}}
+<div class="success-message">
+    {{.SuccessMessage}}
+</div>
+{{end}}
+<form action="/index" method="post">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br>
+    <input type="submit" value="Submit">
+</form>
+
+<!-- 在美化时，不释放未知链接的注释 -->
+<!-- <img src="../uploads/WIN_20230228_18_37_10_Pro.jpg" alt="示例图片" /> -->
+
+<p class="login-link">还没有账号？<a href="/register">点击这里注册</a></p>
+</body>
+</html>

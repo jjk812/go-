@@ -1,0 +1,68 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eddfd6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-wrapper {
+            background-color: #ffffff;
+            padding: 20px;
+            max-width: 300px;
+            margin: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            color: #5a5a5a;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /* Added for better input sizing */
+        }
+
+        input[type=submit] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            background-color: #5C6BC0;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: #3F51B5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-wrapper">
+    <h2>文章删除</h2>
+    <form action="/DoDeleteArticles" method="post">
+        <label for="PostId">文章 ID:</label>
+        <input type="text" id="PostId" name="PostId" required>
+        <input type="submit" value="删除文章">
+    </form>
+</div>
+
+</body>
+</html>

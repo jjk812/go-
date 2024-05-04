@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章详情</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eddfd6;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        p strong {
+            color: #333;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+        .post-meta {
+            background: #fff;
+            border-radius: 5px;
+            padding: 2em;
+            margin-bottom: 1em;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="post-meta">
+    <h1><strong>文章题目:</strong> {{ .post.Title }}</h1>
+    <p><strong>文章ID:</strong> {{ .post.ID }}</p>
+    <p><strong>文章内容:</strong> {{ .post.Content }}</p>
+    <p><strong>作者名字:</strong> {{ .post.Username }}</p>
+    <p><strong>文章创建时间:</strong> {{ .post.CreatedAt }}</p>
+    <p><strong>文章更新时间:</strong> {{ .post.UpdatedAt }}</p>
+    <p><strong>浏览量:</strong> {{ .score }}</p>
+    <!-- 添加其他你想展示的文章属性 -->
+</div>
+</body>
+</html>

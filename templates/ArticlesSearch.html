@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Posts</title>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            background: #eddfd6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        strong {
+            color: #2a2a2a;
+        }
+
+        li strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Posts</h1>
+<ul>
+    {{ range .posts }}
+    <li>
+        <strong>文章题目:</strong> {{ .Title }}<br>
+        <strong>文章发布人:</strong> {{ .Username }}<br>
+        <strong>文章内容:</strong> {{ .Content }}
+    </li>
+    {{ end }}
+</ul>
+</body>
+</html>

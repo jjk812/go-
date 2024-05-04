@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文章的首页</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eddfd6;
+        }
+        .navbar {
+            background-color: #009688;
+            color: white;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: white;
+            padding: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+        .navbar a.button:hover {
+            background-color: #45a049;
+        }
+        .navbar a.home-button {
+            background-color: #4CAF50;
+            margin-left: 10px;
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        .nav-functions {
+            display: flex;
+        }
+        main {
+            padding: 20px;
+        }
+        form input[type="text"] {
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        form button {
+            cursor: pointer;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        section#pagination nav {
+            text-align: center;
+            margin-top: 30px;
+        }
+        section#pagination a {
+            text-decoration: none;
+            color: #009688;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <h1>Welcome to the Article Homepage!</h1>
+    <div class="nav-functions">
+        <a href="/index" class="home-button">首页</a>
+        <a href="/articles/new" class="button">新建文章</a>
+        <a href="/articles/delete" class="button">删除文章</a>
+        <a href="/articles/edit" class="button">编辑文章</a>
+        <a href="/TopArticles" class="button">热搜榜前十</a>
+        <a href="/UserHome" class="button">个人中心</a>
+    </div>
+</div>
+
+<main>
+    <section id="functions">
+        <h2>通用功能</h2>
+        <form action="/DoSearchArticles" method="post">
+            <label for="Title">查询文章:</label>
+            <input type="text" id="Title" name="Title" required>
+            <button type="submit">提交</button>
+        </form>
+    </section>
+
+    <ul>
+        {{ range .posts }}
+        <li>
+            <strong>文章题目:</strong> {{ .Title }}<br>
+            <strong>文章发布人:</strong> {{ .Username }}<br>
+            <a href="/PostDetail?id={{.ID}}" class="button">详细内容</a>
+        </li>
+        {{ end }}
+    </ul>
+
+    <section id="pagination">
+        <nav>
+            {{ if .pagination.HasPrevious }}
+            <a href="/?page={{ subtract .pagination.CurrentPage 1 }}">上一页</a>
+            {{ end }}
+            <span>第 {{ .pagination.CurrentPage }} 页，共 {{ .pagination.TotalPages }} 页</span>
+            {{ if .pagination.HasNext }}
+            <a href="/?page={{ add .pagination.CurrentPage 1 }}">下一页</a>
+            {{ end }}
+        </nav>
+    </section>
+
+</main>
+
+</body>
+</html>

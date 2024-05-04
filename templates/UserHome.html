@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>个人中心</title>
+    <meta charset="utf-8">
+    <style>
+            /* 添加的导航栏样式 */
+        nav {
+            padding: 15px 0;
+        }
+        nav a {
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+        }
+        nav a:hover {
+            color: #ddd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #eddfd6;
+            color: #333;
+        }
+        header {
+            background-color: #0066cc;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .features-section {
+            margin-top: 20px;
+            width: 80%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .button {
+            padding: 12px 25px;
+            margin: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #218838;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+        }
+        form {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-top: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        form input[type="file"] {
+            flex-grow: 1;
+        }
+        form button {
+            flex-shrink: 0;
+            padding: 10px 20px;
+        }
+        .section-heading {
+            width: 80%;
+            text-align: left;
+            font-size: 1.5em;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dee2e6;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        .article, .photo {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .article:hover, .photo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .photo img {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+        .photo-wrapper {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+        .photo-wrapper::after {
+            content: "";
+            flex: auto;
+        }
+    </style>
+</head>
+<body>
+{{ if .AlertMessage }}
+<script type="text/javascript">
+    alert("{{ .AlertMessage }}");
+</script>
+{{ end }}
+<header>
+    <h1>个人中心</h1>
+    <nav>
+        <a href="/index">首页</a>
+        <a href="/articles/new">新建文章</a>
+        <a href="/articles/delete">删除文章</a>
+        <a href="/articles/edit">编辑文章</a>
+    </nav>
+</header>
+
+<main>
+
+    <div class="articles-section">
+        <div class="section-heading">个人文章</div>
+        {{ range .posts }}
+        <div class="article">
+            <strong>ID：</strong>{{ .ID }}<br>
+            <strong>题目：</strong>{{ .Title }}<br>
+            <strong>内容：</strong>{{ .Content }}<br>
+            <strong>创建时间：</strong>{{ .CreatedAt }}<br>
+            <strong>更新时间：</strong>{{ .UpdatedAt }}
+        </div>
+        {{ end }}
+    </div>
+
+    <div class="photos-section">
+        <div class="section-heading">个人相册</div>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" id="file" name="file" required>
+            <button type="submit" class="button">上传图片</button>
+        </form>
+        <div class="photo-wrapper">
+            {{ range .images }}
+            <div class="photo">
+                <img src="/uploads/{{ .ImgURL }}" alt="示例图片">
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

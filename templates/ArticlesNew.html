@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>新建文章</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eddfd6;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header>
+    <h1>新建文章</h1>
+</header>
+
+<main>
+    <form id="new-article-form" action="/DoCreatArticles" method="post">
+        <label for="Title">文章标题:</label>
+        <input type="text" id="Title" name="Title" required>
+        <label for="Content">文章内容:</label>
+        <textarea id="Content" name="Content" rows="10" required></textarea>
+        <button type="submit">提交</button>
+    </form>
+</main>
+
+</body>
+</html>

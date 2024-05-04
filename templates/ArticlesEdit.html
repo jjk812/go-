@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑文章内容</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eddfd6;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        header {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            background: #fff;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: .5em;
+            color: #666;
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(100% - 20px); /* Account for padding */
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        button:active {
+            background-color: #449d44;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            header, form {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>编辑文章内容</h1>
+</header>
+
+<form action="/DoEditArticles" method="post">
+    <label for="PostId">PostID:</label>
+    <input type="text" id="PostId" name="PostId">
+
+    <label for="Content">文章内容:</label>
+    <textarea id="Content" name="Content" rows="10" required></textarea>
+    <button type="submit">提交</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top Articles</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eddfd6; /* 更柔和的背景色 */
+            color: #333;
+        }
+        .navbar {
+            background-color: #0056b3; /* 一个更深的蓝色 */
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1); /* 给导航栏添加简单的阴影效果 */
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #024979; /* 颜色更改为深蓝色 */
+            color: white; /* 保持字体颜色不变 */
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 增加阴影使之更有层次感 */
+            margin-top: 70px; /* 增加距离，确保不被导航栏遮挡 */
+            background: #fff;
+            border-radius: 8px; /* 添加边角圆滑 */
+        }
+        h1 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px; /* 增加与内容的间距 */
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+            transition: background-color 0.3s; /* 添加悬浮动画 */
+        }
+        li:hover {
+            background-color: #f9f9f9; /* 悬浮时更改背景色 */
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .article-title {
+            font-weight: bold;
+            font-size: 1.4em;
+            color: #0056b3; /* 使用和导航栏一致的颜色 */
+        }
+        .article-username,
+        .article-score {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px; /* 增加顶部间距 */
+        }
+        .article-content {
+            margin-top: 10px;
+            text-indent: 20px;
+            line-height: 1.6; /* 增加行高 */
+        }
+        strong {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/index">首页</a>
+    <!-- 在这里可以添加更多的导航链接 -->
+</div>
+
+<div class="container">
+    <h1>Top Articles</h1>
+    <ul>
+        {{ range .postsScores }}
+        <li>
+
+            <div class="article-title">文章题目: {{ .Post.Title }}</div>
+            <div class="article-username">文章发布人: {{ .Post.Username }}</div>
+            <div class="article-content">文章内容：{{ .Post.Content }}</div>
+            <div class="article-score">文章浏览量：{{ .Score }}</div>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+
+</body>
+</html>
